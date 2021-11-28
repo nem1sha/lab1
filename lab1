@@ -1,0 +1,29 @@
+import re
+import json
+
+file = open('pokemon_full.json')
+pokemon_full = file.read()
+file.close()
+
+print('1. Общее количество символов:', len(pokemon_full))
+
+pokemon_non_signs = re.sub('[\w]', '', pokemon_full)
+print('2. Количество символов без пробелов и  знаков препинания:', len(pokemon_full) - len(pokemon_non_signs))
+
+pokemon_full_ = json.loads(pokemon_full)
+max_length = 0
+name_of_pokemon = ''
+for char in pokemon_full_:
+    max_length = max(len(char['description']), max_length)
+    if len(char['description']) == max_length:
+        name_of_pokemon = char['name']
+print('3. Покемон с самым длинным описанием:', name_of_pokemon)
+
+max_number = 0
+for skills in pokemon_full_:
+    for ability in skills['abilities']:
+        max_number = max(len(ability.split()), max_number)
+for skills in pokemon_full_:
+    for ability in skills['abilities']:
+        if max_number == len(ability.split()):
+            print('4. Умение с самым большим количеством слов: ', ability)
