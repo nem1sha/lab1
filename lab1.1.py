@@ -1,4 +1,3 @@
-import re
 import json
 
 file = open('pokemon_full.json')
