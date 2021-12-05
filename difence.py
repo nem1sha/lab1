@@ -22,15 +22,21 @@ for runner in runners:
     stats.append(runner['stats'])
 for stat in stats:
     speed.append(stat['speed'])
-k = 0
+count = 0
 number = 0
 max_speed = 0
-for i in speed:
-    k += 1
-    if i > max_speed:
-        max_speed = i
-        number = k-1
-print('Самый быстрый покемон:', names[number], '; среди:', names)
+# value - значение
+for value in speed:
+    count += 1
+    if value > max_speed:
+        max_speed = value
+        number = count - 1
+print('Самый быстрый покемон:', names[number], '; Среди:', names)
+
+
+
+
+
 
 
 
